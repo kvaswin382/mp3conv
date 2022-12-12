@@ -2,7 +2,7 @@ const express = require("express");
 const ffmpeg = require("fluent-ffmpeg");
 const app = express();
 const request = require("request");
-const port = 3000
+const port = 7000
 
 function string(length) {
     var result           = '';
@@ -28,7 +28,7 @@ function convert(input, output, callback) {
     .run();
 }
 
-app.get("/mp3/:url", (req, res) => {
+app.get("/:url", (req, res) => {
   const video_url = req.params.url;
   const filename = `/${string(16)}.mp3`;
   convert(video_url,filename,(err) => {
@@ -43,7 +43,7 @@ app.get("/mp3/:url", (req, res) => {
       const arr = new Array();
       arr.push({'ok': true});
       arr.push({'src': fullUrl});
-      res.send(JSON.stringify(arr));
+      res.end(JSON.stringify(arr));
     }else{
       console.log(err)
     }
