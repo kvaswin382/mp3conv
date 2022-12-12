@@ -2,7 +2,7 @@ const express = require("express");
 const ffmpeg = require("fluent-ffmpeg");
 const app = express();
 const request = require("request");
-const port = 7000
+const port = 8000
 
 function string(length) {
     var result           = '';
@@ -27,6 +27,10 @@ function convert(input, output, callback) {
     })
     .run();
 }
+
+app.get("/", (req,res) => {
+  res.send("Working");
+});
 
 app.get("/:url", (req, res) => {
   const video_url = req.params.url;
