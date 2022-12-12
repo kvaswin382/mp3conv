@@ -47,7 +47,7 @@ app.get("/:url", (req, res) => {
       const arr = new Array();
       arr.push({'ok': true});
       arr.push({'src': fullUrl});
-      res.end(JSON.stringify(arr));
+      res.send(JSON.stringify(arr));
     }else{
       console.log(err)
     }
