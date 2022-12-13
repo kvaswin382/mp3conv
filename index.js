@@ -60,6 +60,7 @@ app.get("/mp3", (req, res) => {
         const arr = new Array();
         arr.push({ ok: true });
         arr.push({ src: fullUrl });
+        res.set('Content-type: application/json');
         res.send(JSON.stringify(arr));
       } else {
         console.log(err);
